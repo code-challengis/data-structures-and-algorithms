@@ -56,6 +56,27 @@ let characters = [
 
 const sortByChildren = (charArray) => {
   // Solution code here...
+  let arr=charArray.sort((val1,val2) => {
+    if (val1.children.length === val2.children.length) {
+      return charArray.sort((val1, val2) => {
+        if (parseInt(val1.name) > parseInt(val2.name)) {
+          return 1;
+        }
+        else if (parseInt(val1.name) < parseInt(val2.name)) return -1;
+        else return 0;
+      });
+    }
+
+    else {
+      if (parseInt(val1.children.length) > parseInt(val2.children.length)) {
+        return 1;
+      }
+      else if (parseInt(val1.children.length) < parseInt(val2.children.length)) return -1;
+      else return 0;
+
+    }
+  });
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,6 +88,7 @@ Write a function named containsW that takes in a string. This function should us
 
 const containsW = (str) => {
   // Solution code here...
+  return /w/g.test(str);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,6 +105,7 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  return /\d/g.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,6 +117,7 @@ Write a function named containsWorld that takes in a string or number of any len
 
 const containsWorld = (input) => {
   // Solution code here...
+  return /(world)/g.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,6 +130,12 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
+  if(str.match(/\b[A-Z](\w)*/g)) {
+    return str.match(/\b[A-Z](\w)*/g);
+  }
+  else {
+    return [];
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -116,6 +146,11 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  return arr.filter(item => {
+    if (/^[A-J]/g.test(item)) {
+      return item;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
