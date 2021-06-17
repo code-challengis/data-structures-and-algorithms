@@ -10,6 +10,12 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  let resArr=arr.reduce((r, val) => {
+    return r > val ? r : val;
+  }
+    , arr[0]
+  );
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -26,6 +32,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +45,7 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,6 +69,14 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  let newNum = [];
+  let oldNum = Object.entries(obj);
+
+  oldNum.forEach(item => {
+    newNum.push(item[0] + ': ' + item[1]);
+  });
+
+  return newNum;
 };
 
 
@@ -117,6 +133,12 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.forEach(item => {
+    if (Object.keys(item).includes('house')) {
+      houses.push(item.house);
+    }
+
+  });
   return houses;
 };
 
@@ -134,6 +156,14 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  let flag = false;
+  arr.forEach(item => {
+    if(Object.values(item).includes(character)) {
+      flag = Object.keys(item).includes('children');
+    }
+
+  });
+  return flag;
 
 };
 
