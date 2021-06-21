@@ -8,42 +8,38 @@ Write a function called sortStarWarsCharacters that sorts the characters in the 
 
 let starWarsPeople = [
   {
-    "name": "C-3PO",
-    "height": "167",
-    "eye_color": "yellow"
+    'name': 'C-3PO',
+    'height': '167',
+    'eye_color': 'yellow'
   },
   {
-    "name": "Luke Skywalker",
-    "height": "172",
-    "eye_color": "blue"
+    'name': 'Luke Skywalker',
+    'height': '172',
+    'eye_color': 'blue'
   },
   {
-    "name": "R2-D2",
-    "height": "96",
-    "eye_color": "red"
+    'name': 'R2-D2',
+    'height': '96',
+    'eye_color': 'red'
   }
 ];
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  return starWarsArr.sort((a, b) => {
-    if (parseInt(a.height) > parseInt(b.height)) {
+  let res= starWarsPeople.sort((a,b)=>{
+    if(parseInt(a.height)> parseInt(b.height)){
       return -1;
     }
-    else if (parseInt(a.height) < parseInt(b.height)) {
-      return 1;
-    }
-    else {
-      return 0;
-    }
+
   });
-  
+  return res;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index. 
+Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index.
 ------------------------------------------------------------------------------------------------ */
 
 const removeThree = (idx, arr) => {
@@ -60,7 +56,8 @@ Write a function named joinArray that takes an array and joins all of the elemen
 
 const joinArray = (arr) => {
   // Solution code here...
-  return arr.join(' ');
+  let res=arr.join(' ');
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -77,13 +74,15 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
-  let result = [];
+  let res= [];
+  let len=str.length;
   // Solution code here...
-  for (let i = 0; i < str.length; i++) {
-    result.push(str.slice(i, str.length));
+  for (let i = 0; i <= str.length; i++) {
+    let r= str.slice(i,len);
+    res.push(r);
   }
-  result.push('');
-  return result;
+
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -96,7 +95,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
-  return arr.split('');
+  let res=arr.split('');
+   return res;
 };
 
 
@@ -142,19 +142,9 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
-  let pushResult = '';
-  recipe.ingredients.forEach(item => {
-    pushResult = '';
-    item.split(' ').forEach((elm, idx) => {
-      if (!(idx === 1 || idx === 0)) {
-        pushResult = pushResult + elm + ' ';
-      }
-    });
-    result.push(pushResult.slice(0, pushResult.length - 1));
-  });
-  return result;
+  
+ let result=[]
+ return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -278,7 +268,7 @@ describe('Testing challenge 1', () => {
   test('It should sort the star wars characters by height from tallest to shortest', () => {
     expect(sortStarWarsCharacters(starWarsPeople)[0]['name']).toStrictEqual('Luke Skywalker');
     expect(sortStarWarsCharacters(starWarsPeople)[2]['height']).toStrictEqual('96');
-  })
+  });
 });
 
 describe('Testing challenge 2', () => {
