@@ -56,39 +56,24 @@ let characters = [
 
 const sortByChildren = (charArray) => {
   // Solution code here...
-  let arr=charArray.sort((val1,val2) => {
-    if (val1.children.length === val2.children.length) {
-      return charArray.sort((val1, val2) => {
-        if (parseInt(val1.name) > parseInt(val2.name)) {
-          return 1;
-        }
-        else if (parseInt(val1.name) < parseInt(val2.name)) return -1;
-        else return 0;
-      });
-    }
-
-    else {
-      if (parseInt(val1.children.length) > parseInt(val2.children.length)) {
-        return 1;
-      }
-      else if (parseInt(val1.children.length) < parseInt(val2.children.length)) return -1;
-      else return 0;
-
-    }
+  charArray.sort((a, b) => {
+    return a.children.length - b.children.length;
   });
-  return arr;
+  return charArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named containsW that takes in a string. This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not. 
+Write a function named containsW that takes in a string. This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not.
 
 ------------------------------------------------------------------------------------------------ */
 
 const containsW = (str) => {
   // Solution code here...
-  return /w/g.test(str);
+
+  return str.includes('w');
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -105,7 +90,10 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
-  return /\d/g.test(input);
+  let regex = /[0-9]/g;
+  let result = regex.test(input);
+  return result;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -117,7 +105,9 @@ Write a function named containsWorld that takes in a string or number of any len
 
 const containsWorld = (input) => {
   // Solution code here...
-  return /(world)/g.test(input);
+  let regex =/world/g;
+  let result=regex.test(input);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,10 +120,11 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
-  if(str.match(/\b[A-Z](\w)*/g)) {
-    return str.match(/\b[A-Z](\w)*/g);
-  }
-  else {
+  let regex1=/\b[A-Z](\w)*/g;
+ 
+  if(str.match(regex1) !== null){
+    return str.match(regex1);
+  }else{
     return [];
   }
 };
@@ -146,11 +137,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
-  return arr.filter(item => {
-    if (/^[A-J]/g.test(item)) {
-      return item;
+  let regex1= /^[A-J]/;
+  let resArr=[];
+  for(let i=0 ;i<arr.length ;i++){
+    if(regex1.test(arr[i])){
+      resArr.push(arr[i]);
     }
-  });
+  }
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -167,6 +161,7 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -242,8 +237,8 @@ describe('Testing challenge 2', () => {
   });
   test('It should return false if the input does not contain a w', () => {
     expect(containsW('hello everyone')).toBe(false);
-  })
-})
+  });
+});
 
 describe('Testing challenge 3', () => {
   test('It should return true if the input is a number', () => {
@@ -269,7 +264,7 @@ describe('Testing challenge 4', () => {
   test('It should return false if the input does not contain the word school', () => {
     expect(containsWorld('hello everyone')).toBe(false);
   });
-})
+});
 
 describe('Testing challenge 5', () => {
   test('It should only return words that begin with a capital letter', () => {
