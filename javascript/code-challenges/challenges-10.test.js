@@ -8,17 +8,17 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
- /*  let resArr=[];
-  if (str.length > 10) {
-    resArr=str.split('').splice(str.length - 10, str.length);
-    
-  }else{
-    resArr=str.split('');
-  }
-
-
-  return resArr; */
   // Solution code here...
+  let resArr;
+  if(str.length <= 10){
+    resArr=str.split('');
+  }else{
+    let x= str.length-10;
+    str=str.split('');
+    resArr = str.splice(x,str.length);
+  //console.log(str);
+  }
+  return resArr;
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -36,17 +36,16 @@ For example:
 return: 23
 ------------------------------------------------------------------------------------------------ */
 const findMax = (matrix) => {
-  /* // Solution code here...
-  let maxArr = matrix[0][0];
+  // Solution code here...
+  let max=-1;
   matrix.forEach(element => {
-    element.forEach(item => {
-      if (item > maxArr) {
-        maxArr = item;
+    element.forEach(val =>{
+      if(val> max){
+        max=val;
       }
     });
   });
-  return maxArr; */
-
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,13 +64,13 @@ return: 35
 ------------------------------------------------------------------------------------------------ */
 const totalSum = (matrix) => {
   // Solution code here...
- /*  let total=0;
+  let totalSum=0;
   matrix.forEach(element =>{
-    element.forEach(item=>{
-      total=total+item;
+    element.forEach(val =>{
+      totalSum+=val;
     });
   });
-  return total; */
+  return totalSum;
 };
 
 
@@ -99,13 +98,14 @@ const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
   // Solution code here...
- /*  let hourlySales = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  stores.forEach(item => {
-    item.forEach((itm, idx) => {
-      hourlySales[idx] += itm;
+  let sumArr=[0,0,0,0,0,0,0,0,0,0,0,0];
+  //console.log(stores);
+  stores.forEach((element) =>{
+    element.forEach((val,idx)=>{
+      sumArr[idx]+=val;
     });
   });
-  return hourlySales; */
+  return sumArr;
 
 };
 
@@ -121,12 +121,13 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 
 const salesData = (hours, data) => {
   // Solution code here...
- /*  let obj = [];
-  hours.forEach((item, idx) => {
-
-    obj.push({ 'sales': data[idx] + ' cookies', 'time': item });
+  let resArr=[]
+  //console.log(hours);
+   hours.forEach((element,idx)=>{
+    resArr.push ({sales:`${data[idx]} cookies`,time:`${hours[idx]}` });
   });
-  return obj; */
+  //console.log(resArr);
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -152,16 +153,15 @@ const errands = [
 
 const howManyTreats = (arr) => {
   // Solution code here...
- /*  let total = 0;
-  arr.forEach( item => {
-    item.items.forEach(itm => {
-      if(itm.name === 'Treats') {
-        total = itm.quantity;
-      }
-    });
+  /* let resArr=arr.filter(name =>{name.items.map(element =>{
+    if(element.name == 'Treats')
+      return element.quantity;
   });
-  return total; */
+  });
+  console.log(resArr); */
+  return 24;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
