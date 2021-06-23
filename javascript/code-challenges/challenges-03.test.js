@@ -8,9 +8,11 @@ Write a function called addTwo that takes in an array and adds two to every valu
 
 const addTwo = (arr) => {
   // Solution code here...
-  let resArr = [];
-  for (let i = 0; i < arr.length; i++) {
-    resArr.push(arr[i] + 2);
+
+  let resArr =[];
+  for (let i=0;i<arr.length;i++)
+  {
+    resArr.push(arr[i]+2);
   }
   return resArr;
 };
@@ -25,11 +27,9 @@ For example, typeNum([1, 'bob' ,3]) returns [1,3].
 
 const typeNum = (arr) => {
   // Solution code here...
-  return arr.filter(item => {
-    if (!isNaN(item)) {
-      return item;
-    }
-  });
+  let resArr = arr.filter(element => typeof(element) == 'number');
+  
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,11 +42,8 @@ For example, containsAnd(['panda', 'ran', 'and']) returns ['panda', 'and'].
 
 const containsAnd = (arr) => {
   // Solution code here...
-  return arr.filter(item => {
-    if (item.includes('and')) {
-      return item;
-    }
-  });
+  let resArr = arr.filter(element => element.includes('and'));
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -59,11 +56,8 @@ For example, oddValues([1,2,3]) returns [1,3].
 
 const oddValues = (arr) => {
   // Solution code here...
-  return arr.filter(item => {
-    if (item % 2 !== 0) {
-      return item;
-    }
-  });
+  let resArr = arr.filter(element => element%2 != 0);
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -76,11 +70,9 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 
 const notInFirstArray = (forbiddenValues, arr) => {
   // Solution code here...
-  return arr.filter(item => {
-    if (!forbiddenValues.includes(item)) {
-      return item;
-    }
-  });
+  let resArr=[];
+   resArr = arr.filter(element => !forbiddenValues.includes(element));
+  return resArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
