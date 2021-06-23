@@ -10,12 +10,10 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
-  let resArr=arr.reduce((r, val) => {
-    return r > val ? r : val;
-  }
-    , arr[0]
-  );
-  return resArr;
+  let max = arr.reduce(function(a, b) {
+    return Math.max(a, b);
+  });
+  return max;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,7 +43,9 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   // Solution code here...
-  return Object.values(obj).includes(value);
+  let res=false;
+  Object.values(obj).map(element =>{if(element==value){res = true; }});
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -69,14 +69,16 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
-  let newNum = [];
-  let oldNum = Object.entries(obj);
-
-  oldNum.forEach(item => {
-    newNum.push(item[0] + ': ' + item[1]);
+  //let resArr=[];
+  let entries = Object.entries(obj);
+  let resArr=[];
+  entries.forEach(element =>{
+    resArr.push(element.join(': '));
   });
+  //console.log(resArr);
+  return resArr;
 
-  return newNum;
+
 };
 
 
@@ -133,12 +135,10 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  arr.forEach(item => {
-    if (Object.keys(item).includes('house')) {
-      houses.push(item.house);
-    }
-
+  houses=arr.map(element =>{
+    return element.house;
   });
+  //console.log(houses);
   return houses;
 };
 
@@ -156,15 +156,15 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  let flag = false;
-  arr.forEach(item => {
-    if(Object.values(item).includes(character)) {
-      flag = Object.keys(item).includes('children');
+  let flag=false;
+  arr.map(element =>{
+    if(element.name==character){
+      if(element.children != null ){
+        flag=true;
+      }
     }
-
   });
   return flag;
-
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -177,6 +177,7 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+
 };
 
 /* ------------------------------------------------------------------------------------------------
